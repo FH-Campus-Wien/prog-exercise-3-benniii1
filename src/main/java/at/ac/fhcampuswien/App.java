@@ -102,21 +102,21 @@ public class App {
         char c;
         boolean isUpperCaseLetter;
         boolean isLowerCaseLetter;
-        for (int i = 0; i < chars.length; i++){
+        for (int i = 0; i < chars.length; i++) {
             c = chars[i];
             isUpperCaseLetter = c > 64 && c < 91;
             isLowerCaseLetter = c > 96 && c < 123;
 
-            if (i == 0){
-                if(isUpperCaseLetter) camelCaseSentence += c;
-                if(isLowerCaseLetter) camelCaseSentence += (char) (c-32);
-            }else{
-                boolean isLastCharSpace = chars[i-1] == 32;
-                if (isLastCharSpace){
-                    if(isUpperCaseLetter) camelCaseSentence += c;
-                    if(isLowerCaseLetter) camelCaseSentence += (char) (c-32);
-                }else{
-                    if (isUpperCaseLetter) camelCaseSentence += (char) (c+32);
+            if (i == 0) {
+                if (isUpperCaseLetter) camelCaseSentence += c;
+                if (isLowerCaseLetter) camelCaseSentence += (char) (c - 32);
+            } else {
+                boolean isLastCharSpace = chars[i - 1] == 32;
+                if (isLastCharSpace) {
+                    if (isUpperCaseLetter) camelCaseSentence += c;
+                    if (isLowerCaseLetter) camelCaseSentence += (char) (c - 32);
+                } else {
+                    if (isUpperCaseLetter) camelCaseSentence += (char) (c + 32);
                     if (isLowerCaseLetter) camelCaseSentence += c;
                 }
             }
@@ -125,10 +125,82 @@ public class App {
         return camelCaseSentence;
     }
 
+    public static int checkDigit(int[] digit) {
+        int sum = 0;
+        int code;
+        int loading;
+        for (int i = 0; i < digit.length; i++) {
+            code = digit[i];
+            loading = i + 2;
+
+            sum += code * loading;
+        }
+
+        int rest = sum % 11;
+        int checkDigit = 11 - rest;
+
+        if (checkDigit == 10) return 0;
+        if (checkDigit == 11) return 5;
+
+        return checkDigit;
+    }
+
     public static void main(String[] args) {
         // test your method implementations here
         // make method calls
         // print their results
         // etc.
+
+        oneMonthCalendar(31, 4);
+
+        System.out.println();
+
+        long[] randomNumbers = lcg(95);
+        for (long n : randomNumbers) {
+            System.out.println(n);
+        }
+
+        System.out.println();
+
+        guessingGame(randomNumberBetweenOneAndHundred());
+
+        System.out.println();
+
+        int[] a = new int[]{100,99,98};
+        int[] b = new int[]{0,1,2};
+
+        System.out.print("a before swap: ");
+        for (int i : a) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+
+        System.out.print("b before swap: ");
+        for (int i : b) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+
+        swapArrays(a, b);
+
+        System.out.print("a after swap: ");
+        for (int i : a) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+
+        System.out.print("b after swap: ");
+        for (int i : b) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+
+        System.out.println();
+
+        System.out.println(camelCase("wow, We can cReaTe a camel cAse sentence out of THIS!"));
+
+        System.out.println();
+
+        System.out.println(checkDigit(new int[]{3, 9, 1, 5, 8}));
     }
 }
