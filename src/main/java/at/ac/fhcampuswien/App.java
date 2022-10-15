@@ -100,10 +100,12 @@ public class App {
         char[] chars = s.toCharArray();
 
         char c;
+        boolean isUpperCaseLetter;
+        boolean isLowerCaseLetter;
         for (int i = 0; i < chars.length; i++){
             c = chars[i];
-            boolean isUpperCaseLetter = c > 64 && c < 91;
-            boolean isLowerCaseLetter = c > 96 && c < 123;
+            isUpperCaseLetter = c > 64 && c < 91;
+            isLowerCaseLetter = c > 96 && c < 123;
 
             if (i == 0){
                 if(isUpperCaseLetter) camelCaseSentence += c;
