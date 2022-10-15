@@ -55,16 +55,50 @@ public class App {
         return lcg;
     }
 
+    public static void guessingGame(int numberToGuess){
+        Scanner scanner = new Scanner(System.in);
+
+        int n;
+        for (int i = 0; i < 10; i++){
+            System.out.printf("Guess number %d: ", i+1);
+            n = scanner.nextInt();
+
+            if (i == 9){
+                System.out.println("You lost! Have you ever heard of divide & conquer?");
+                return;
+            }
+
+            if (n == numberToGuess){
+                System.out.println("You won wisenheimer!");
+                return;
+            }
+
+            if (n > numberToGuess) System.out.println("The number AI picked is lower than your guess.");
+            if (n < numberToGuess) System.out.println("The number AI picked is higher than your guess.");
+        }
+    }
+
+    public static int randomNumberBetweenOneAndHundred(){
+        Random random = new Random();
+        return random.nextInt(1, 101);
+    }
+
+    public static boolean swapArrays(int[] a, int[] b){
+        if (a.length != b.length) return false;
+
+        for (int i = 0; i < a.length; i++){
+            a[i] = a[i] + b[i];
+            b[i] = a[i] - b[i];
+            a[i] = a[i] - b[i];
+        }
+
+        return true;
+    }
+
     public static void main(String[] args) {
         // test your method implementations here
         // make method calls
         // print their results
         // etc.
-//        oneMonthCalendar(30, 6);
-
-//        long[] lcg = lcg(0);
-//        for (long n : lcg) {
-//            System.out.println(n);
-//        }
     }
 }
