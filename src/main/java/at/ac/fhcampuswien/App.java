@@ -80,7 +80,7 @@ public class App {
 
     public static int randomNumberBetweenOneAndHundred() {
         Random random = new Random();
-        return random.nextInt(1, 101);
+        return random.nextInt(100) + 1;
     }
 
     public static boolean swapArrays(int[] a, int[] b) {
